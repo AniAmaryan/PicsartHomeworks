@@ -1,6 +1,6 @@
-package homework4_5.service;
+package homework4_5_7.service;
 
-import homework4_5.model.Electronics;
+import homework4_5_7.model.Electronics;
 
 public class PCService extends Electronics {
     private static final String PATH = "C:\\Users\\User\\Desktop\\PicsartHomeworks\\src\\homework4_5\\resources\\pc.txt";

@@ -1,6 +1,6 @@
-package homework4_5.main;
+package homework4_5_7.main;
 
-import homework4_5.service.Factory;
+import homework4_5_7.service.Factory;
 
 public class Main {
 

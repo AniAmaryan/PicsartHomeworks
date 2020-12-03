@@ -1,4 +1,4 @@
-package homework4_5.model;
+package homework4_5_7.model;
 
 public class TV {
     private boolean isColorTV;

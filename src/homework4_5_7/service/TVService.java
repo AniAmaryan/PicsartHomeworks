@@ -1,7 +1,7 @@
-package homework4_5.service;
+package homework4_5_7.service;
 
-import homework4_5.model.Electronics;
-import homework4_5.model.TV;
+import homework4_5_7.model.Electronics;
+import homework4_5_7.model.TV;
 
 import java.util.Scanner;
 

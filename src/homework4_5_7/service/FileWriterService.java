@@ -1,12 +1,9 @@
-package homework4_5.service;
+package homework4_5_7.service;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 
 public class FileWriterService {
 //    public static Path write(String path, String data) throws Exception {

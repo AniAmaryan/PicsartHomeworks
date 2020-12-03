@@ -1,6 +1,6 @@
-package homework4_5.model;
+package homework4_5_7.model;
 
-import homework4_5.service.PowerManager;
+import homework4_5_7.service.PowerManager;
 
 import java.util.Date;
 import java.util.Scanner;

@@ -1,6 +1,6 @@
-package homework4_5.model;
+package homework4_5_7.model;
 
-public class Phone {
+public class Notebook {
     private boolean hasCamera;
     private double cameraResolution;
 
@@ -20,4 +20,3 @@ public class Phone {
         this.cameraResolution = cameraResolution;
     }
 }
-
