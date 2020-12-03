@@ -1,0 +1,7 @@
+Manufacturer = 'a'
+Model = 'a'
+Price = 78
+CreationDate = Thu Dec 03 16:19:40 AMT 2020
+IsUnderWarranty = Yes
+ScreenSize = 45.6
+

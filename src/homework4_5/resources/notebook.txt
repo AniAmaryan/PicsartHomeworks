@@ -1,0 +1,16 @@
+Manufacturer = 'a'
+Model = 'x'
+Price = 1
+CreationDate = Thu Dec 03 21:33:13 AMT 2020
+IsUnderWarranty = Yes
+ScreenSize = 8.2
+Has Camera = Yes
+Camera Resolution = 1.2
+Manufacturer = 'q'
+Model = 'a'
+Price = 9
+CreationDate = Thu Dec 03 21:33:41 AMT 2020
+IsUnderWarranty = No
+ScreenSize = 1.8
+Has Camera = No
+Camera Resolution = 8.9
