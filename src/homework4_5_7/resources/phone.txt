@@ -1,0 +1,2 @@
+Apple,xs,500,Yes,45.45,Yes,9889.5
+Samsung,Galaxy,30,No,22.22,No,84.94

@@ -6,10 +6,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class FileWriterService {
-//    public static Path write(String path, String data) throws Exception {
-//        return Files.write(Paths.get(path), data.getBytes());
-//    }
-
     public static void writeTxt(String path, String data) {
         FileWriter fw = null;
         BufferedWriter bw = null;
@@ -28,8 +24,8 @@ public class FileWriterService {
                 pw.close();
                 bw.close();
                 fw.close();
-            } catch (IOException io) {// can't do anything } } } // in Java 7 you can do it easily using try-with-resource // statement as shown below try (FileWriter f = new FileWriter("names.txt", true); BufferedWriter b = new BufferedWriter(f); PrintWriter p = new PrintWriter(b);) { p.println("appending text into file"); p.println("Gaura"); p.println("Bori"); } catch (IOException i) { i.printStackTrace(); } }
-
+            } catch (IOException io) {
+                io.printStackTrace();
             }
         }
     }

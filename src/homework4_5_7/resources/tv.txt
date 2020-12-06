@@ -1,0 +1,2 @@
+Sony,Xperia,7400,Yes,42.6,No,No
+Panasonic,Viera,410,Yes,1.2,Yes,No

@@ -1,0 +1,2 @@
+Apple,iPad,75,No,18.3,No,75.63
+Acer,One,845,Yes,32.5,Yes,12,3

@@ -1,62 +1,80 @@
 package homework4_5_7.model;
 
+import homework4_5_7.exceptions.IntException;
+import homework4_5_7.exceptions.StringException;
 import homework4_5_7.service.PowerManager;
 
-import java.util.Date;
 import java.util.Scanner;
 
 public abstract class Electronics implements PowerManager {
     private String manufacturer;
     private String model;
     private int price;
-    private Date creationDate;
     private boolean isUnderWarranty;
     private double screenSize;
 
-    public void createBasicCritters() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter manufacturer");
-        this.manufacturer = scanner.next();
-        System.out.println("Enter model");
-        this.model = scanner.next();
-        System.out.println("Enter price");
-        this.price = scanner.nextInt();
-        this.creationDate = new Date();
-        System.out.println("Enter is the device under warranty: Y for (Yes) or N for (NO)");
-        char answer = scanner.next().charAt(0);
-        this.isUnderWarranty = (answer == 'y' || answer == 'Y');
-        System.out.println("Enter screenSize");
-        this.screenSize = scanner.nextDouble();
+    public void sortByPrice(Electronics[] electronics) throws IntException {
+        System.out.println("----------------------");
+        System.out.println("Sorting By Price: ");
+        boolean swapped = true;
+        while (swapped) {
+            swapped = false;
+            for (int i = 1; i < electronics.length; i++) {
+                if (electronics[i - 1].getPrice() > electronics[i].getPrice()) {
+                    Electronics temp = electronics[i];
+                    electronics[i] = electronics[i - 1];
+                    electronics[i - 1] = temp;
+                    swapped = true;
+                }
+            }
+        }
+        for (Electronics el : electronics) {
+            System.out.println(el.print());
+        }
     }
 
-    @Override
-    public String toString() {
+    public void createBasicCritters() throws StringException, IntException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter manufacturer");
+        setManufacturer(scanner.next());
+        System.out.println("Enter model");
+        setModel(scanner.next());
+        System.out.println("Enter price");
+        setPrice(scanner.nextInt());
+        System.out.println("Enter is the device under warranty: Y for (Yes) or N for (NO)");
+        char answer = scanner.next().charAt(0);
+        setUnderWarranty((answer == 'y' || answer == 'Y'));
+        System.out.println("Enter screenSize");
+        setScreenSize(scanner.nextDouble());
+    }
+
+    public String print() {
         return "Manufacturer = '" + manufacturer + '\'' + "\n" +
                 "Model = '" + model + '\'' + "\n" +
                 "Price = " + price + "\n" +
-                "CreationDate = " + creationDate + "\n" +
                 "IsUnderWarranty = " + (isUnderWarranty ? "Yes" : "No") + "\n" +
                 "ScreenSize = " + screenSize + "\n";
     }
 
+    @Override
+    public String toString() {
+        return manufacturer + ',' + model + "," + price + ","
+                + (isUnderWarranty ? "Yes" : "No") + "," + screenSize + ",";
+    }
+
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        char answer;
         System.out.println("-----TURN ON/OFF-----");
         System.out.println("You want to turn on device");
         System.out.println("A. Yes");
         System.out.println("B. No");
-        System.out.println("X. Exit");
-        answer = scanner.next().toUpperCase().charAt(0);
-        switch (answer) {
+        String answer = scanner.next();
+        switch (answer.toUpperCase().charAt(0)) {
             case 'A':
                 turnOn();
                 break;
             case 'B':
                 turnOff();
-                break;
-            case 'X':
-                System.out.println("Thank you for using our service");
                 break;
             default:
                 System.out.println("Wrong command, returning previous menu");
@@ -78,8 +96,14 @@ public abstract class Electronics implements PowerManager {
         return manufacturer;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufacturer(String manufacturer) throws StringException {
+        String regex = "[A-Za-z !,?._'@]+";
+        if (!manufacturer.isEmpty() && manufacturer.matches(regex)) {
+            this.manufacturer = manufacturer;
+        } else {
+            System.out.println("Invalid option");
+            throw new StringException("Invalid option: " + manufacturer);
+        }
     }
 
     public String getModel() {
@@ -94,16 +118,12 @@ public abstract class Electronics implements PowerManager {
         return price;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public Date getCreationDate() {
-        return creationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        this.creationDate = creationDate;
+    public void setPrice(int price) throws IntException {
+        if (price > 0) {
+            this.price = price;
+        } else {
+            throw new IntException("The price shouldn't be zero or less then zero ");
+        }
     }
 
     public boolean isUnderWarranty() {

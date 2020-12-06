@@ -1,8 +1,14 @@
 package homework4_5_7.model;
 
-public class TV {
+public class TV extends Electronics {
     private boolean isColorTV;
     private boolean isFullHD;
+
+    @Override
+    public String print() {
+        return super.print() + "Color = '" + isColorTV() + '\'' + "\n" +
+                "Full HD = " + isFullHD() + "\n";
+    }
 
     public boolean isColorTV() {
         return isColorTV;
