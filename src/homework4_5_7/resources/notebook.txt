@@ -2,3 +2,4 @@ Acer,Swift,600,Yes,12.3,No,23.6
 Dell,XPS,823,No,7.25,No,23.4
 Apple,MacBook,1222,Yes,7.85,No,23.4
 Sony,Vaio,300,No,9.85,No,23.9
+dell,insirone,6000,Yes,12.5,No,81.3

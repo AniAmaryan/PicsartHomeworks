@@ -18,31 +18,26 @@ public class Factory {
                     PCService pcService = new PCService();
                     pcService.createPc();
                     pcService.writeAllData();
-                    pcService.start();
                     break;
                 case 'B':
                     NotebookService notebookService = new NotebookService();
                     notebookService.createNotebook();
                     notebookService.writeAllData();
-                    notebookService.start();
                     break;
                 case 'C':
                     TVService tvService = new TVService();
                     tvService.createTV();
                     tvService.writeAllData();
-                    tvService.start();
                     break;
                 case 'D':
                     PhoneService phoneService = new PhoneService();
                     phoneService.createPhone();
                     phoneService.writeAllData();
-                    phoneService.start();
                     break;
                 case 'E':
                     TabletService tabletService = new TabletService();
                     tabletService.createTablet();
                     tabletService.writeAllData();
-                    tabletService.start();
                     break;
                 case 'F':
                     CatalogService catalogService = new CatalogService();

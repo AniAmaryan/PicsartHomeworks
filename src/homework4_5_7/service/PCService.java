@@ -1,18 +1,20 @@
 package homework4_5_7.service;
 
 import homework4_5_7.exceptions.IntException;
-import homework4_5_7.model.Electronics;
 import homework4_5_7.model.PC;
 
-public class PCService extends Electronics {
+import java.util.List;
+
+public class PCService extends ElectronicsService {
+    private PC pc;
     private static final String PATH = "C:\\Users\\User\\Desktop\\PicsartHomeworks\\src\\homework4_5_7\\resources\\pc.txt";
 
     public PC[] readPCData() throws Exception, IntException {
 
-        String[] read = FileReaderService.read(PATH);
-        PC[] pc = new PC[read.length];
-        for (int i = 0; i < read.length; i++) {
-            String[] pcArray = read[i].split(",");
+        List<String> read = FileReaderService.read(PATH);
+        PC[] pc = new PC[read.size()];
+        for (int i = 0; i < read.size(); i++) {
+            String[] pcArray = read.get(i).split(",");
             pc[i] = new PC();
             pc[i].setManufacturer(pcArray[0]);
             pc[i].setModel(pcArray[1]);
@@ -32,18 +34,9 @@ public class PCService extends Electronics {
     }
 
     public void createPc() throws Exception, IntException {
-        createBasicCritters();
+        pc = new PC();
+        pc = (PC) createBasicCritters(pc);
         System.out.println("PC created !!!\n");
-    }
-
-    @Override
-    public void turnOn() {
-        super.turnOn();
-    }
-
-    @Override
-    public void turnOff() {
-        super.turnOff();
     }
 
     public void writeAllData() throws Exception {

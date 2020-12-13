@@ -2,12 +2,12 @@ package homework4_5_7.service;
 
 import homework4_5_7.exceptions.IntException;
 import homework4_5_7.exceptions.StringException;
-import homework4_5_7.model.Electronics;
 import homework4_5_7.model.Phone;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class PhoneService extends Electronics implements CameraManager {
+public class PhoneService extends ElectronicsService implements CameraManager {
     private Phone phone;
     private static final String PATH = "C:\\Users\\User\\Desktop\\PicsartHomeworks\\src\\homework4_5_7\\resources\\phone.txt";
 
@@ -16,11 +16,11 @@ public class PhoneService extends Electronics implements CameraManager {
 
     public Phone[] readPhoneData() throws Exception, IntException {
 
-        String[] read = FileReaderService.read(PATH);
-        Phone[] phones = new Phone[read.length];
+        List<String> read = FileReaderService.read(PATH);
+        Phone[] phones = new Phone[read.size()];
 
-        for (int i = 0; i < read.length; i++) {
-            String[] notebookArray = read[i].split(",");
+        for (int i = 0; i < read.size(); i++) {
+            String[] notebookArray = read.get(i).split(",");
             phones[i] = new Phone();
             phones[i].setManufacturer(notebookArray[0]);
             phones[i].setModel(notebookArray[1]);
@@ -47,26 +47,6 @@ public class PhoneService extends Electronics implements CameraManager {
         FileWriterService.writeTxt(PATH, toString());
     }
 
-    public void sortByPrice(Phone[] phones) {
-        System.out.println("----------------------");
-        System.out.println("Sorting By Price: ");
-        boolean swapped = true;
-        while (swapped) {
-            swapped = false;
-            for (int i = 1; i < phones.length; i++) {
-                if (phones[i - 1].getPrice() > phones[i].getPrice()) {
-                    Phone temp = phones[i];
-                    phones[i] = phones[i - 1];
-                    phones[i - 1] = temp;
-                    swapped = true;
-                }
-            }
-        }
-        for (Phone phone : phones) {
-            System.out.println(phone.print());
-        }
-    }
-
     @Override
     public String toString() {
         final String camera = (phone.isHasCamera() ? "Yes" : "No");
@@ -74,19 +54,9 @@ public class PhoneService extends Electronics implements CameraManager {
         return super.toString() + camera + resolution;
     }
 
-    @Override
-    public void turnOn() {
-        System.out.println("The Phone is on");
-    }
-
-    @Override
-    public void turnOff() {
-        System.out.println("The Phone is off");
-    }
-
     public void createPhone() throws StringException, IntException {
         phone = new Phone();
-        createBasicCritters();
+        phone = (Phone) createBasicCritters(phone);
         createCameraCritters();
         System.out.println("Phone created !!!\n");
 

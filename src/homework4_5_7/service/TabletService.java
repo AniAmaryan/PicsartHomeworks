@@ -2,22 +2,22 @@ package homework4_5_7.service;
 
 import homework4_5_7.exceptions.IntException;
 import homework4_5_7.exceptions.StringException;
-import homework4_5_7.model.Electronics;
 import homework4_5_7.model.Tablet;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class TabletService extends Electronics implements CameraManager {
+public class TabletService extends ElectronicsService implements CameraManager {
     private Tablet tablet;
     private static final String PATH = "C:\\Users\\User\\Desktop\\PicsartHomeworks\\src\\homework4_5_7\\resources\\tablet.txt";
 
     public Tablet[] readTabletData() throws Exception, IntException {
 
-        String[] read = FileReaderService.read(PATH);
-        Tablet[] tablets = new Tablet[read.length];
+        List<String> read = FileReaderService.read(PATH);
+        Tablet[] tablets = new Tablet[read.size()];
 
-        for (int i = 0; i < read.length; i++) {
-            String[] notebookArray = read[i].split(",");
+        for (int i = 0; i < read.size(); i++) {
+            String[] notebookArray = read.get(i).split(",");
             tablets[i] = new Tablet();
             tablets[i].setManufacturer(notebookArray[0]);
             tablets[i].setModel(notebookArray[1]);
@@ -51,39 +51,9 @@ public class TabletService extends Electronics implements CameraManager {
         return super.toString() + camera + resolution;
     }
 
-    public void sortByPrice(Tablet[] tablets){
-        System.out.println("----------------------");
-        System.out.println("Sorting By Price: ");
-        boolean swapped = true;
-        while (swapped) {
-            swapped = false;
-            for (int i = 1; i < tablets.length; i++) {
-                if (tablets[i - 1].getPrice() > tablets[i].getPrice()) {
-                    Tablet temp = tablets[i];
-                    tablets[i] = tablets[i - 1];
-                    tablets[i - 1] = temp;
-                    swapped = true;
-                }
-            }
-        }
-        for (Tablet tablet : tablets) {
-            System.out.println(tablet.print());
-        }
-    }
-
-    @Override
-    public void turnOn() {
-        System.out.println("The Tablet is on");
-    }
-
-    @Override
-    public void turnOff() {
-        System.out.println("The Tablet is off");
-    }
-
     public void createTablet() throws StringException, IntException {
         tablet = new Tablet();
-        createBasicCritters();
+        tablet = (Tablet) createBasicCritters(tablet);
         createCameraCritters();
         System.out.println("Tablet created !!!\n");
     }

@@ -2,45 +2,25 @@ package homework4_5_7.service;
 
 import homework4_5_7.exceptions.IntException;
 import homework4_5_7.exceptions.StringException;
-import homework4_5_7.model.Electronics;
 import homework4_5_7.model.TV;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class TVService extends Electronics {
+public class TVService extends ElectronicsService {
     private TV tv;
     private final static String PATH = "C:\\Users\\User\\Desktop\\PicsartHomeworks\\src\\homework4_5_7\\resources\\tv.txt";
 
     public TVService() {
     }
 
-    public void sortByPrice(TV[] tvs) {
-        System.out.println("----------------------");
-        System.out.println("Sorting By Price: ");
-        boolean swapped = true;
-        while (swapped) {
-            swapped = false;
-            for (int i = 1; i < tvs.length; i++) {
-                if (tvs[i - 1].getPrice() > tvs[i].getPrice()) {
-                    TV temp = tvs[i];
-                    tvs[i] = tvs[i - 1];
-                    tvs[i - 1] = temp;
-                    swapped = true;
-                }
-            }
-        }
-        for (TV tv : tvs) {
-            System.out.println(tv.print());
-        }
-    }
-
     public TV[] readTVData() throws Exception, IntException {
 
-        String[] read = FileReaderService.read(PATH);
-        TV[] tvs = new TV[read.length];
+        List<String> read = FileReaderService.read(PATH);
+        TV[] tvs = new TV[read.size()];
 
-        for (int i = 0; i < read.length; i++) {
-            String[] notebookArray = read[i].split(",");
+        for (int i = 0; i < read.size(); i++) {
+            String[] notebookArray = read.get(i).split(",");
             tvs[i] = new TV();
             tvs[i].setManufacturer(notebookArray[0]);
             tvs[i].setModel(notebookArray[1]);
@@ -74,19 +54,9 @@ public class TVService extends Electronics {
         return super.toString() + color + fullHD;
     }
 
-    @Override
-    public void turnOn() {
-        System.out.println("The TV is on");
-    }
-
-    @Override
-    public void turnOff() {
-        System.out.println("The TV is off");
-    }
-
     public void createTV() throws StringException, IntException {
         tv = new TV();
-        createBasicCritters();
+        tv = (TV) createBasicCritters(tv);
         createTVCritters();
         System.out.println("TV created !!!\n");
     }
