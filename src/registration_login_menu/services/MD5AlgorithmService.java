@@ -1,4 +1,4 @@
-package registration_login.services;
+package registration_login_menu.services;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

@@ -1,9 +1,9 @@
-package registration_login.services;
+package registration_login_menu.services;
 
-import registration_login.exceptions.InvalidEmailException;
-import registration_login.exceptions.InvalidFullNameException;
-import registration_login.exceptions.InvalidPasswordException;
-import registration_login.exceptions.InvalidUsernameException;
+import registration_login_menu.exceptions.InvalidEmailException;
+import registration_login_menu.exceptions.InvalidFullNameException;
+import registration_login_menu.exceptions.InvalidPasswordException;
+import registration_login_menu.exceptions.InvalidUsernameException;
 import java.io.IOException;
 import java.util.List;
 

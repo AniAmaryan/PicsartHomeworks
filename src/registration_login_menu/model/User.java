@@ -1,8 +1,8 @@
-package registration_login.model;
+package registration_login_menu.model;
 
-import registration_login.services.MD5AlgorithmService;
-import registration_login.services.UserValidationService;
-import registration_login.exceptions.*;
+import registration_login_menu.services.MD5AlgorithmService;
+import registration_login_menu.services.UserValidationService;
+import registration_login_menu.exceptions.*;
 import java.io.IOException;
 
 public class User {

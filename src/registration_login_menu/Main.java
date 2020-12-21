@@ -1,7 +1,7 @@
-package registration_login;
+package registration_login_menu;
 
-import registration_login.model.User;
-import registration_login.services.UserService;
+import registration_login_menu.model.User;
+import registration_login_menu.services.UserService;
 
 import java.util.Scanner;
 

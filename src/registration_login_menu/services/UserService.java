@@ -1,7 +1,7 @@
-package registration_login.services;
+package registration_login_menu.services;
 
-import registration_login.exceptions.InvalidUserInputException;
-import registration_login.model.User;
+import registration_login_menu.exceptions.InvalidUserInputException;
+import registration_login_menu.model.User;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;

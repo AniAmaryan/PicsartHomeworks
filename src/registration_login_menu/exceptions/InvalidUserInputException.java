@@ -1,4 +1,4 @@
-package registration_login.exceptions;
+package registration_login_menu.exceptions;
 
 public class InvalidUserInputException extends Exception {
     public InvalidUserInputException(){
