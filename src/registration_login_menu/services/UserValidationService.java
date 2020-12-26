@@ -1,31 +1,29 @@
 package registration_login_menu.services;
 
-import registration_login_menu.exceptions.InvalidEmailException;
-import registration_login_menu.exceptions.InvalidFullNameException;
-import registration_login_menu.exceptions.InvalidPasswordException;
-import registration_login_menu.exceptions.InvalidUsernameException;
+import registration_login_menu.exceptions.*;
+import registration_login_menu.model.User;
+
 import java.io.IOException;
 import java.util.List;
 
 public class UserValidationService {
-    private static final String PATH = "C:\\Users\\User\\Desktop\\PicsartHomeworks\\src\\registration_login\\" +
-            "resources\\database.txt";
+    private static final String PATH = "C:\\Users\\User\\Desktop\\PicsartHomeworks\\src\\registration_login_menu\\resources\\database.txt";
 
-    public static void isValidEmail(String email) throws InvalidEmailException {
+    protected static void isValidEmail(String email) throws InvalidEmailException {
         String regex = "^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$";
         if (!email.matches(regex)) {
             throw new InvalidEmailException("Invalid email");
         }
     }
 
-    public static void isValidFullName(String fullName) throws InvalidFullNameException {
+    protected static void isValidFullName(String fullName) throws InvalidFullNameException {
         String regex = "^[\\p{L} .'-]+$";
         if (!fullName.matches(regex)) {
             throw new InvalidFullNameException("Invalid full name");
         }
     }
 
-    public static void isValidPassword(String password) throws InvalidPasswordException {
+    protected static void isValidPassword(String password) throws InvalidPasswordException {
         int countOfUppercase = 0;
         int countOfDigits = 0;
         char chars;
@@ -37,12 +35,12 @@ public class UserValidationService {
                 countOfDigits += 1;
             }
         }
-        if (password.length() < 8 || countOfUppercase != 2 || countOfDigits != 3) {
+        if (password.length() < 8 || countOfUppercase < 2 || countOfDigits < 3) {
             throw new InvalidPasswordException("Invalid password");
         }
     }
 
-    public static void isValidUsername(String username) throws IOException, InvalidUsernameException {
+    protected static void isValidUsername(String username) throws IOException, InvalidUsernameException {
         if (!isValidUsernameLength(username) || !isUsernameDuplicate(username)) {
             throw new InvalidUsernameException("Invalid username");
         }
@@ -65,5 +63,13 @@ public class UserValidationService {
             }
         }
         return true;
+    }
+
+    public static void isValidUser(User user) throws InvalidUserInputException, IOException {
+        isValidUsername(user.getUsername());
+        isValidPassword(user.getPassword());
+        isValidEmail(user.getEmail());
+        isValidFullName(user.getFullName());
+
     }
 }

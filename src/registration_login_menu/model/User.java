@@ -11,6 +11,16 @@ public class User {
     private String email;
     private String password;
 
+    public User(String fullName, String username, String email, String password) {
+        this.fullName = fullName;
+        this.username = username;
+        this.email = email;
+        this.password = MD5AlgorithmService.md5(password);
+    }
+
+    public User() {
+    }
+
     @Override
     public String toString() {
         return getFullName() + "," + getUsername() + "," + getEmail() + "," + getPassword() + "\n";
@@ -21,7 +31,6 @@ public class User {
     }
 
     public void setFullName(String fullName) throws InvalidFullNameException {
-        UserValidationService.isValidFullName(fullName);
         this.fullName = fullName;
     }
 
@@ -30,7 +39,6 @@ public class User {
     }
 
     public void setUsername(String username) throws InvalidUsernameException, IOException {
-        UserValidationService.isValidUsername(username);
         this.username = username;
     }
 
@@ -39,7 +47,6 @@ public class User {
     }
 
     public void setEmail(String email) throws InvalidEmailException {
-        UserValidationService.isValidEmail(email);
         this.email = email;
     }
 
@@ -48,8 +55,6 @@ public class User {
     }
 
     public void setPassword(String password) throws InvalidPasswordException {
-        UserValidationService.isValidPassword(password);
-        this.password = MD5AlgorithmService.md5(password);
-
+        this.password = password;
     }
 }
