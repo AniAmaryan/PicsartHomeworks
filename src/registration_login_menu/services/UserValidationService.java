@@ -2,7 +2,6 @@ package registration_login_menu.services;
 
 import registration_login_menu.exceptions.*;
 import registration_login_menu.model.User;
-
 import java.io.IOException;
 import java.util.List;
 
@@ -70,6 +69,5 @@ public class UserValidationService {
         isValidPassword(user.getPassword());
         isValidEmail(user.getEmail());
         isValidFullName(user.getFullName());
-
     }
 }

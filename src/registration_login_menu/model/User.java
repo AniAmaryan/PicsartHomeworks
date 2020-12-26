@@ -1,8 +1,10 @@
 package registration_login_menu.model;
 
+import registration_login_menu.exceptions.InvalidEmailException;
+import registration_login_menu.exceptions.InvalidFullNameException;
+import registration_login_menu.exceptions.InvalidPasswordException;
+import registration_login_menu.exceptions.InvalidUsernameException;
 import registration_login_menu.services.MD5AlgorithmService;
-import registration_login_menu.services.UserValidationService;
-import registration_login_menu.exceptions.*;
 import java.io.IOException;
 
 public class User {
