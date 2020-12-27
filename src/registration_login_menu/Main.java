@@ -2,7 +2,6 @@ package registration_login_menu;
 
 import registration_login_menu.model.User;
 import registration_login_menu.services.UserService;
-
 import java.util.Scanner;
 
 public class Main {
@@ -20,7 +19,6 @@ public class Main {
         System.out.println("1. Registration");
         System.out.println("2. Login");
         System.out.println("3. Exit");
-        System.out.println("4. Read");
         System.out.println("Please enter the operation and end with the Enter key:");
         Scanner scanner = new Scanner(System.in);
         int option = scanner.nextInt();
@@ -38,10 +36,6 @@ public class Main {
             case 3:
                 flag = false;
                 break;
-            case 4: {
-                userService.read();
-                break;
-            }
             default:
                 System.out.println("I'm Sorry,there is not the " + option + " option,please try again.");
         }

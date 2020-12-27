@@ -32,21 +32,6 @@ public class UserService {
         FileService.write(PATH, user.toString());
     }
 
-    public void read() throws IOException, InvalidUserInputException {
-        List<String> read = FileService.read(PATH);
-        List<User> userList = new ArrayList<>();
-        for (int i = 0; i < read.size(); i++) {
-            User user = new User();
-            String[] line = read.get(i).split(",");
-            user.setFullName(line[0]);
-            user.setUsername(line[1]);
-            user.setEmail(line[2]);
-            user.setPassword(line[3]);
-            userList.add(user);
-        }
-        System.out.println(userList.toString());
-    }
-
     //Input: username, password
     //Result: Login success or invalid input data
     public void loginUser() throws IOException, InvalidUserInputException {
